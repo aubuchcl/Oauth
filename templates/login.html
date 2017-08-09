@@ -19,6 +19,41 @@
 		</div>
 		<div id="result"></div>
 
+		<script>
+			// sign in callback funciton that takes an authresult object as input.
+			function signInCallback(authResult){
+				// if the authResult object contains a parameter called code then we know the authorization with the Google API server was successful and the code is present
+				if(authResult['code']){
+					// hide the sign in bar now that the user is authorized
+					$('#signinButton').attr('style', 'display: none');
+					// ajax call that passes the one time code to the server.
+					$.ajax({
+						type: 'POST',
+						url: '/gconnect?state={{STATE}}',
+						processData: false,
+						contentType: 'application/octet-stream; charset=utf-8',
+						data: authResult['code'],
+						success: function(result){
+							if(result){
+								$('#result').html('Login Successful!</br>' + result + '<br>Redirecting...')
+								setTimeout(function(){
+									window.location.href = '/restaurant';
+								}, 4000);
+							} else if (authResult['error']){
+								console.log('There was an error: ' + authResult['error']);
+							} else{
+								$("#result").html("Fialed to make a server side call.  Check your config and console.");
+							}
+						}
+
+
+
+					})
+
+				}
+			}
+		</script>
+
 	</body>
 </html>
 
