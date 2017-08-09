@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<script src='//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+		<script src='https://apis.google.com/js/client:platform.js?onload=start' async defer></script>
+
+	</head>
+	<body>
+
+		<div id="signinButton">
+			<span class="g-signin"
+			  data-socpe="openid email"
+			  data-clientid="484234443991-gop1au3vhikncoeo552334rnjicifdmd.apps.googleusercontent.com"
+			  data-redirecturi="postmessage"
+			  data-accesstype="offline"
+			  data-cookiepolicy="single_host_origin"
+			  data-callback="signInCallback"
+			  data-approvalpromt="force">
+			</span>
+		</div>
+		<div id="result"></div>
+
+	</body>
+</html>
+
+
+<!-- what "google" data resources we want to be able to access -->
+<!-- example name , email, profile picture ex ex : what resources does my web application want to collect from the authorization and from google about the user -->
+			  <!-- data-socpe="openid" -->
+
+
+<!-- data-redirecturi="postmessage" :: enables the one time use code flow -->
+
+<!-- data-accesstype="offline" :: means that our server can make requests to the google api server even if the user is not logged in -->
+
+<!-- data-cookiepolicy="single_host_origin" :: determines the scope of the URI's that can access the cookie:: single_host_origin refers to when we only have a single host name and no subdomains. -->
+
+<!-- data-callback="signInCallback":: specifies a callback function (Im guessing from jQuery).  If the user clicks and calls this function the function executes and send the one time use code along with an access token. -->
+
+
+<!-- data-approvalpromt="force" :: means that our user has to log in each time we visit the login page and doesnt check to see if they are already logged in -->
