@@ -8,7 +8,7 @@
 
 		<div id="signinButton">
 			<span class="g-signin"
-			  data-socpe="openid email"
+			  data-scope="openid email"
 			  data-clientid="484234443991-gop1au3vhikncoeo552334rnjicifdmd.apps.googleusercontent.com"
 			  data-redirecturi="postmessage"
 			  data-accesstype="offline"
@@ -31,8 +31,8 @@
 						type: 'POST',
 						url: '/gconnect?state={{STATE}}',
 						processData: false,
-						contentType: 'application/octet-stream; charset=utf-8',
 						data: authResult['code'],
+						contentType: 'application/octet-stream; charset=utf-8',
 						success: function(result){
 							if(result){
 								$('#result').html('Login Successful!</br>' + result + '<br>Redirecting...')
